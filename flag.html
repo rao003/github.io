@@ -1,0 +1,204 @@
+<!--
+    Represent your country's flag in code!
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FLAG</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <style>
+  
+ /*
+    Represent your country's flag in code!
+*/
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+	background-color: #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#container {
+	display: flex;
+	flex-direction: row;
+}
+
+#wood {
+    position: relative;
+	width: 10px;
+	height: 300px;
+	border-radius: 3px;
+	background-image: url("http://d1xguy9zq468ef.cloudfront.net/sites/default/files/450x450%20classwood%20brown.jpg");
+}
+
+#flag {
+	width: 220px;
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-shadow: 1px 1px #aaa;
+}
+
+#color1 {
+	flex: 1;
+	
+	background-image: url("https://st2.depositphotos.com/1020341/6406/i/950/depositphotos_64061963-stock-photo-waving-flag-of-germany-and.jpg");
+}
+
+#color2 {
+	flex: 1;
+	
+	background-image: url("https://st2.depositphotos.com/1020341/6406/i/950/depositphotos_64061963-stock-photo-waving-flag-of-germany-and.jpg");
+}
+
+#emblem {
+	position: absolute;
+	align-self: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url("https://cibiogas.org/sites/default/files/Brasil-e-Alemanha-bandeiras.jpg");
+	background-size: cover;
+	width: 175px;
+	height: 175px;
+	border-radius: 50% 50% 50% 50%;
+	transform: rotate(45deg);
+	transition: display 0.5s;
+}
+
+#toggleButton {
+    padding: 10px 20px;
+    background-color: rgb(233, 89, 159);
+    border-radius: 12px;
+    box-shadow: 1px 1px #ddd;
+    color: white;
+}
+
+#toggleButton:focus {
+    outline: none;
+}
+
+ 
+  
+  
+  </style>
+  
+</head>
+
+<body>
+    <div style="display: flex; flex-direction: column">
+    <div id="container">
+        <div id="wood"></div>
+        <div id="flag">
+            <div id="color1"></div>
+            <div id="emblem"></div>
+            <div id="color2"></div>
+        </div>
+        
+    </div>
+    <button id="toggleButton" onclick="toggleFlag()" style="align-self: center; margin-top: 25px">Close!</button>
+    </div>
+    
+    <script>
+    // Represent your country's flag in code!
+
+function toggleFlag() {
+    var but = document.getElementById("toggleButton");
+    if (but.innerHTML === "Open!") {
+        but.innerHTML = "Close";
+        openFlag();
+    }
+    else {
+        but.innerHTML = "Open!";
+        closeFlag();
+    }
+}
+
+function closeFlag() {
+    var flag = document.getElementById("flag");
+    var emblem = document.getElementById("emblem");
+    var mT = 0;
+    var mR = 0;
+    var w = 220;
+    var emblW = 75;
+    var emblH = 75;
+
+    var interval = setInterval(function () {
+        mT += 10;
+        flag.style.marginTop = mT + "px";
+        if (mT >= 140) {
+            clearInterval(interval);
+            minimizeFlag();
+        }
+    }, 100);
+
+    function minimizeFlag() {
+        var interval2 = setInterval(function () {
+            w -= 20;
+            mR += 20;
+            flag.style.width = w + "px";
+            flag.style.marginRight = mR + "px";
+            if (emblW >= 15) {
+                emblW -= 15;
+                emblH -= 15;
+                emblem.style.width = emblW + "px";
+                emblem.style.heigth = emblH + "px";
+            }
+            if (w <= 20) {
+                clearInterval(interval2);
+            }
+        }, 100);
+    }
+}
+
+function openFlag() {
+    var flag = document.getElementById("flag");
+    var emblem = document.getElementById("emblem");
+    var mT = 140;
+    var mR = 200;
+    var w = 20;
+    var emblW = -15;
+    var emblH = -15;
+
+    var interval = setInterval(function () {
+        mT -= 10;
+        flag.style.marginTop = mT + "px";
+        if (mT === 0) {
+            clearInterval(interval);
+            minimizeFlag();
+        }
+    }, 100);
+
+    function minimizeFlag() {
+        var interval2 = setInterval(function () {
+            w += 20;
+            mR -= 20;
+            flag.style.width = w + "px";
+            flag.style.marginRight = mR + "px";
+            if (emblW < 75) {
+                emblW += 15;
+                emblH += 15;
+                emblem.style.width = emblW + "px";
+                emblem.style.heigth = emblH + "px";
+            }
+            if (w >= 220) {
+                clearInterval(interval2);
+            }
+        }, 100);
+    }
+}
+    
+    </script>
+</body>
+
+</html>
