@@ -1,0 +1,80 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Verificador de Seguranca de Senhas</title>
+	<style>
+  progress {
+  color: #0063a6;
+  font-size: .6em;
+  line-height: 1.5em;
+  width: 150px;
+  height: 20px;
+  border: 1px solid #0063a6;
+  background: #fff;
+}
+progress::-moz-progress-bar { background: #0063a6; }
+progress::-webkit-progress-bar { background: #fff; }
+progress::-webkit-progress-value { background: #0063a6; }
+  </style>
+  </head>
+	<body>
+		<h1>Verificador de Seguranca de Senhas</h1>
+    
+    Password: <input type="password" id="password" onkeyup="get_result()"><br><br>
+		Strength: <progress value="0" max="5" id="strength"></progress>
+    
+  <script>
+  // Language: Web
+// Task Description: Improve the password strength estimator if you think it is not good enough. You can also make some design changes, add some animations, or make other changes. You can get some interesting ideas from a simple Google search!
+
+function length(password) {
+   if(password.length > 5) {
+       return 1;
+   }
+   return 0;
+}
+function has_digit(password) {
+    var pattern = /\d/;
+    if(password.match(pattern)) {
+        return 1;
+    }  
+    return 0;
+}
+function has_lower(password) {
+    var pattern = /[a-z]/;
+    if(password.match(pattern)) {
+        return 1;
+    }
+    return 0;  
+}
+function has_upper(password) {
+    var pattern = /[A-Z]/;
+    if(password.match(pattern)) {
+        return 1;
+    }
+    return 0;
+}
+function has_symbol(password) {
+    var pattern = /[$-/:-?{-~!@#%&*()"^_`\[\]]/;
+    if(password.match(pattern)) {
+        return 1;
+    }
+    return 0;
+}
+function get_result() {
+    var password = document.getElementById("password").value;
+    var num=length(password)+
+    has_digit(password)+
+    has_lower(password)+
+    has_upper(password)+
+    has_symbol(password);
+    document.getElementById("strength").value = num;
+}  
+
+  
+  </script>
+    
+	</body>
+</html>
