@@ -1,6 +1,6 @@
 entry = int(input("digite seu numero"))
 romano = ""
-lista = ["I", "II", "III", "IV","V","VI","VII","VIII","IX"]
+lista = ["I", "II", "III", "IV","V","VI","VII","VIII","IX","X"]
 
 if entry < 30:                          # menor do que 30
     while(entry > 10):
