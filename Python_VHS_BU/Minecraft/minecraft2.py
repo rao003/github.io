@@ -1,1 +1,0 @@
-python minecraft-renderObj.py
